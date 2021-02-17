@@ -38,7 +38,7 @@ class DB {
 	# Получаем ассоциативный массив
 	
 	public function getRows($sql,$params = []){
-		if (!$params) {
+		if (is_array($params) && !empty($params)) {
 			$stmt = $this->link->query($sql);
 		}else {
 			$stmt = $this->prepare($sql);
@@ -50,7 +50,7 @@ class DB {
 	# INSERT
 	
 	public function add($sql,$params = []){
-		if (!$params) {
+		if (is_array($params) && !empty($params)) {
 			$stmt = $this->link->query($sql);
 		}else{
 			$stmt = $this->prepare($sql);
